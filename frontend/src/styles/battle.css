@@ -1,0 +1,239 @@
+.battle-container {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 24px;
+}
+
+.battle-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 48px;
+  text-align: center;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+.title-char {
+  display: inline-block;
+  animation: charFloat 0.6s ease forwards;
+  opacity: 0;
+  background: linear-gradient(45deg, #ff0000, #f80000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes charFloat {
+  from {
+    opacity: 0;
+    transform: translateY(20px) rotate(-3deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+}
+
+.battle-arena {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px;
+  flex-wrap: wrap;
+}
+
+.battle-side {
+  flex: 1;
+  min-width: 280px;
+  text-align: center;
+}
+
+.battle-side h3 {
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 800;
+}
+
+.side-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.player-badge {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.player1-theme h3 {
+  color: var(--accent-blue);
+}
+.player1-theme .player-badge {
+  background: var(--accent-blue);
+  color: white;
+}
+.player1-theme .total-score {
+  background: rgba(78, 168, 222, 0.1);
+  border-color: rgba(78, 168, 222, 0.4);
+  color: var(--accent-blue);
+}
+
+.player2-theme h3 {
+  color: var(--accent-primary);
+}
+.player2-theme .player-badge {
+  background: var(--accent-primary);
+  color: white;
+}
+.player2-theme .total-score {
+  background: rgba(233, 69, 96, 0.1);
+  border-color: rgba(233, 69, 96, 0.4);
+  color: var(--accent-primary);
+}
+
+.battle-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.battle-card-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0.5;
+  transform: scale(0.95);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.battle-card-wrapper.revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.battle-card-wrapper .warrior-card {
+  width: 160px;
+}
+
+.battle-card-wrapper .warrior-card-image {
+  height: 100px;
+}
+
+.card-score {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+  animation: scoreReveal 0.4s ease;
+}
+
+@keyframes scoreReveal {
+  from {
+    opacity: 0;
+    transform: scale(2);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.total-score {
+  margin-top: 16px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+}
+
+.battle-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  min-width: 200px;
+}
+
+.battle-animation {
+  font-size: 4rem;
+  animation: battlePulse 0.6s ease infinite alternate;
+}
+
+@keyframes battlePulse {
+  from {
+    transform: scale(1) rotate(-5deg);
+  }
+  to {
+    transform: scale(1.3) rotate(5deg);
+  }
+}
+
+.result-badge {
+  padding: 20px 32px;
+  border-radius: var(--radius);
+  font-size: 1.3rem;
+  font-weight: 800;
+  text-align: center;
+  animation: resultAppear 0.6s ease;
+}
+
+.result-badge.victory {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.2),
+    rgba(233, 69, 96, 0.2)
+  );
+  border: 2px solid var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+.result-badge.draw {
+  background: rgba(78, 168, 222, 0.1);
+  border: 2px solid var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+@keyframes resultAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.btn-battle-start {
+  background: var(--bg-input);
+  color: white;
+  border: none;
+  padding: 20px 48px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 2px 2px 4px var(--border-glow);
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+.btn-battle-start:hover {
+  background: var(--accent-blue);
+}
+
+.battle-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+}

@@ -1,0 +1,23 @@
+.global-footer {
+  width: 100%;
+  text-align: center;
+  padding: 14px 20px;
+  background: rgba(10, 0, 20, 0.7);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: var(--text-muted);
+  font-size: 0.85em;
+  border-top: 1px solid rgba(55, 0, 255, 0.2);
+  font-family: 'Trebuchet MS', sans-serif;
+  margin-top: auto;
+  letter-spacing: 0.3px;
+}
+
+.global-footer p {
+  margin: 0;
+}
+
+.global-footer strong {
+  color: var(--accent-primary);
+  font-weight: 700;
+}

@@ -1,0 +1,130 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// ==================== USUARIOS ====================
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique @db.VarChar(50)
+  password  String   @db.VarChar(255)
+  role      Role     @default(PLAYER)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  matchesAsPlayer1 Match[]           @relation("Player1")
+  matchesAsPlayer2 Match[]           @relation("Player2")
+  matchesWon       Match[]           @relation("Winner")
+  selections       PlayerSelection[]
+
+  @@map("users")
+}
+
+enum Role {
+  PLAYER
+  ADMIN
+}
+
+// ==================== RAZAS ====================
+model Race {
+  id          Int       @id @default(autoincrement())
+  name        String    @db.VarChar(50)
+  description String?   @db.Text
+  warriors    Warrior[]
+
+  @@map("races")
+}
+
+// ==================== PODERES ====================
+model Power {
+  id       Int       @id @default(autoincrement())
+  type     String    @db.VarChar(50)
+  value    Int
+  warriors Warrior[]
+
+  @@map("powers")
+}
+
+// ==================== HECHIZOS ====================
+model Spell {
+  id       Int       @id @default(autoincrement())
+  type     String?   @db.VarChar(50)
+  value    Int?
+  warriors Warrior[]
+
+  @@map("spells")
+}
+
+// ==================== GUERREROS (= CARTAS) ====================
+model Warrior {
+  id          Int       @id @default(autoincrement())
+  name        String    @db.VarChar(100)
+  raceId      Int       @map("race_id")
+  powerId     Int       @map("power_id")
+  spellId     Int       @map("spell_id")
+  imageUrl    String?   @db.VarChar(255) @map("image_url")
+  description String?   @db.Text
+
+  race       Race              @relation(fields: [raceId], references: [id])
+  power      Power             @relation(fields: [powerId], references: [id])
+  spell      Spell             @relation(fields: [spellId], references: [id])
+  selections PlayerSelection[]
+
+  @@map("warriors")
+}
+
+// ==================== PARTIDAS ====================
+model Match {
+  id           Int         @id @default(autoincrement())
+  mode         MatchMode   @default(FIVE_VS_FIVE)
+  status       MatchStatus @default(WAITING)
+  player1Id    Int         @map("player1_id")
+  player2Id    Int?        @map("player2_id")
+  winnerId     Int?        @map("winner_id")
+  winnerSlot   Int?        @map("winner_slot") // 1 o 2 para distinguir quién ganó en la mesa
+  player2Name  String?     @map("player2_name") // Nombre del invitado (Jugador 2)
+  reasonForWin String?     @db.Text @map("reason_for_win")
+  createdAt    DateTime    @default(now()) @map("created_at")
+  updatedAt    DateTime    @updatedAt @map("updated_at")
+
+  player1    User              @relation("Player1", fields: [player1Id], references: [id])
+  player2    User?             @relation("Player2", fields: [player2Id], references: [id])
+  winner     User?             @relation("Winner", fields: [winnerId], references: [id])
+  selections PlayerSelection[]
+
+  @@map("matches")
+}
+
+enum MatchMode {
+  ONE_VS_ONE
+  THREE_VS_THREE
+  FIVE_VS_FIVE
+}
+
+enum MatchStatus {
+  WAITING
+  SELECTING
+  IN_PROGRESS
+  FINISHED
+}
+
+// ==================== SELECCIÓN DE GUERREROS POR PARTIDA ====================
+model PlayerSelection {
+  id         Int      @id @default(autoincrement())
+  matchId    Int      @map("match_id")
+  userId     Int      @map("user_id")
+  warriorId  Int      @map("warrior_id")
+  playerSlot Int      @map("player_slot") // 1 o 2 para distinguir en juego local
+  selectedAt DateTime @default(now()) @map("selected_at")
+
+  match   Match   @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  warrior Warrior @relation(fields: [warriorId], references: [id])
+
+  @@unique([matchId, playerSlot, warriorId])
+  @@map("player_selections")
+}

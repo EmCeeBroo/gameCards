@@ -1,0 +1,23 @@
+# Repositorio Base
+node_modules/
+.env
+
+# Directorios de compilación
+dist/
+build/
+output/
+
+# Archivos de SO/IDE
+.VSCode/
+.idea/
+.DS_Store
+*.suo
+*.sln
+*.user
+*.log
+
+# Archivos temporales
+coverage/
+.nyc_output/
+*.swp
+*.bak

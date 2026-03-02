@@ -1,0 +1,182 @@
+.select-container {
+  padding: 32px 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.select-container h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 32px;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.player-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.toggle-btn {
+  padding: 12px 32px;
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.toggle-btn.active {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  background: rgba(233, 69, 96, 0.1);
+}
+
+.selection-area {
+  margin-bottom: 40px;
+}
+
+.selected-warriors {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.player-selections {
+  text-align: center;
+}
+
+.player-selections h3 {
+  margin-bottom: 12px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.selected-slots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.slot {
+  width: 100px;
+  height: 130px;
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(26, 26, 46, 0.5);
+  transition: var(--transition);
+}
+
+.slot.filled {
+  border-style: solid;
+  border-color: var(--accent-gold);
+}
+
+.slot .warrior-card {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.slot .warrior-card .warrior-card-image {
+  height: 80px;
+}
+
+.slot .warrior-card .warrior-name {
+  font-size: 0.7rem;
+}
+
+.empty-slot {
+  font-size: 2rem;
+  color: var(--text-muted);
+}
+
+.vs-divider {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--accent-primary);
+  text-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
+}
+
+.warriors-pool {
+  margin-top: 40px;
+}
+
+.warriors-pool h2 {
+  text-align: center;
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+}
+
+.warriors-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 40px;
+  padding-bottom: 40px;
+}
+
+.btn-battle-start {
+  font-family: 'Inter', sans-serif;
+}
+
+.player2-name-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding: 12px 20px;
+  background: rgba(233, 69, 96, 0.08);
+  border: 1px solid rgba(233, 69, 96, 0.3);
+  border-radius: var(--radius-sm);
+}
+
+.player2-name-input label {
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.player2-name-input input {
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-family: 'Trebuchet MS', sans-serif;
+  max-width: 200px;
+  transition: var(--transition);
+}
+
+.player2-name-input input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--border-glow);
+}

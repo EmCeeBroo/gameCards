@@ -1,0 +1,119 @@
+.ranking-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.ranking-container h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 32px;
+  background: linear-gradient(45deg, #ff0000, #f80000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: 'Trebuchet MS', sans-serif;
+}
+
+.empty-ranking {
+  text-align: center;
+  padding: 60px;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+}
+
+.ranking-table-wrapper {
+  overflow-x: auto;
+}
+
+.ranking-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-secondary);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.ranking-table th {
+  padding: 16px;
+  text-align: left;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.ranking-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.ranking-table tr:hover {
+  background: var(--bg-card);
+}
+
+.ranking-table .top-1 {
+  background: rgba(255, 215, 0, 0.08);
+}
+
+.ranking-table .top-2 {
+  background: rgba(192, 192, 192, 0.05);
+}
+
+.ranking-table .top-3 {
+  background: rgba(205, 127, 50, 0.05);
+}
+
+.position {
+  font-size: 1.2rem;
+  width: 50px;
+}
+
+.username {
+  font-weight: 700;
+}
+
+.wins {
+  color: var(--accent-green);
+  font-weight: 600;
+}
+
+.losses {
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.draws {
+  color: var(--accent-blue);
+}
+
+.winrate-bar {
+  position: relative;
+  width: 100px;
+  height: 24px;
+  background: var(--bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.winrate-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-gold));
+  border-radius: 12px;
+  transition: width 0.8s ease;
+}
+
+.winrate-bar span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
