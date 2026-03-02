@@ -121,3 +121,6 @@ dist
 
 # Mac OS
 .DS_Store
+
+# Documentation
+api_complete.md
