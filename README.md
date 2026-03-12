@@ -427,4 +427,6 @@ Available roles: `ADMIN`, `PLAYER`
 
 ## 📄 License
 
-This project was developed as a personal and academic exercise. Feel free to explore, fork, and learn from it.
+This project is licensed under the [MIT License](LICENSE) - see the LICENSE file for details.
+
+Copyright (c) 2026 EmCeeCode. Feel free to explore, fork, and learn from it.
