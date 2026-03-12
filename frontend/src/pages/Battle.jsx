@@ -47,11 +47,7 @@ export function Battle() {
 
       const backendMode = modeMap[battleData.mode] || 'FIVE_VS_FIVE';
 
-      console.log('Creando partida con:', {
-        player1Id: user.id,
-        player2Id: null, // Guest mode
-        mode: backendMode
-      });
+
 
       // Create match via API (Player 2 is null for Guest/Local mode)
       const matchResult = await api.post('/matches', {

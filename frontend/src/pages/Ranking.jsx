@@ -15,7 +15,7 @@ export function Ranking() {
       const data = await api.get('/ranking');
       setRanking(data);
     } catch (error) {
-      console.error('Error loading ranking:', error);
+      // Error manejado silenciosamente para no ensuciar la consola en producción
     } finally {
       setLoading(false);
     }

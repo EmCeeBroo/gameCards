@@ -1,0 +1,20 @@
+# Comandos Útiles de Prisma
+
+1. Inicialización y Generación
+   - npx prisma init: Inicializa Prisma en un proyecto nuevo.
+   - npx prisma generate: Actualiza el Cliente de Prisma. *Debes ejecutar este comando cada vez que hagas cambios en schema.prisma*.
+
+2. Sincronización Rápida (Recomendado para Desarrollo)
+   - npx prisma db push: Crea o actualiza las tablas en la base de datos basándose directamente en tu schema.prisma. No guarda un historial, útil para prototipar rápido.
+
+3. Migraciones (Recomendado para Producción o Trabajo en Equipo)
+   - npx prisma migrate dev --name "nombre_del_cambio": Crea un archivo de migración con los cambios y lo aplica a la base de datos de desarrollo.
+   - npx prisma migrate reset: Borra la base de datos entera, vuelve a aplicar todas las migraciones desde cero y ejecuta el seed. (¡Borra todos los datos!).
+   - npx prisma migrate deploy: Aplica las migraciones pendientes en producción.
+
+4. Semillas de Datos (Seeding)
+   - npm run db:seed: Ejecuta el script de semilla (definido en package.json).
+   - npx prisma db seed: Comando nativo de Prisma para sembrar la base de datos si está configurado en package.json.
+
+5. Herramientas Visuales
+   - npx prisma studio: Abre una interfaz gráfica en el navegador (http://localhost:5555) para ver, editar y borrar los registros de la base de datos.
